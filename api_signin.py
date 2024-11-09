@@ -1,8 +1,8 @@
 import logging
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 from flask_pymongo import PyMongo
-from werkzeug.security import generate_password_hash
-from flask_cors import CORS 
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
@@ -12,6 +12,7 @@ mongo = PyMongo(app)
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# Route for user registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     logging.info("Received request on /register endpoint")
@@ -48,6 +49,35 @@ def register():
         logging.warning("Method not allowed on /register endpoint")
         return jsonify({"message": "Method not allowed"}), 405
 
+# Route for user login
+@app.route('/login', methods=['POST'])
+def login():
+    logging.info("Received request on /login endpoint")
+
+    if request.content_type == 'application/json':
+        data = request.get_json()
+        logging.debug(f"Received data: {data}")
+
+        username = data.get('username')
+        password = data.get('password')
+
+        if not username or not password:
+            logging.warning("Missing fields in login request")
+            return jsonify({"message": "Both username and password are required"}), 400
+
+        # Check if the user exists in the database
+        user = mongo.db.security.find_one({"username": username})
+
+        if user and check_password_hash(user['password'], password):
+            # On successful login, redirect to another site or return a success message
+            logging.info("User authenticated successfully")
+            return jsonify({"message": "Login successful!"}), 200
+        else:
+            logging.warning("Invalid username or password")
+            return jsonify({"message": "Invalid username or password"}), 401
+    else:
+        logging.warning("Request with incorrect Content-Type received")
+        return jsonify({"message": "Content-Type must be application/json"}), 415
+
 if __name__ == '__main__':
     app.run(debug=True)
-

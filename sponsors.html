@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #4921eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 900px;
+        }
+
+        h1 {
+            color: #3e8e41;
+        }
+
+        .appreciation-text {
+            font-size: 1.2em;
+            color: #444;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 30px;
+        }
+
+        .event-button, .modify-button, .back-button {
+            padding: 12px 20px;
+            background-color: #3e8e41;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .event-button:hover, .modify-button:hover, .back-button:hover {
+            background-color: #2c6b2f;
+        }
+
+        .back-button {
+            background-color: #f44336;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #f9f9f9;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal h2 {
+            color: #3e8e41;
+            font-size: 1.6em;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            padding: 12px 20px;
+            background-color: #3e8e41;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2c6b2f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Our Sponsors</h1>
+
+        <div class="appreciation-text">
+            We are deeply grateful to our sponsors for their generous support and dedication. Your partnership fuels our growth and success, and we are honored to have you by our side. Thank you for making a positive impact with us!
+        </div>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <!-- Add Event and Modify Event Buttons -->
+            <button class="event-button" onclick="openAddEventModal()">Add Event</button>
+            <button class="modify-button" onclick="openModifyEventModal()">Modify Event</button>
+        </div>
+
+        <!-- Back to Home Button -->
+        <a href="page.html"><button class="back-button">Back to Home</button></a>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div id="addEventModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddEventModal()">&times;</span>
+            <h2>Add a New Event</h2>
+            <form id="addEventForm">
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" name="eventName" required><br>
+
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate" required><br>
+
+                <label for="eventDescription">Event Description:</label>
+                <textarea id="eventDescription" name="eventDescription" required></textarea><br>
+
+                <label for="venue">Venue:</label>
+                <input type="text" id="venue" name="venue" placeholder="e.g., Online, Stadium" required><br>
+
+                <label for="nature">Nature:</label>
+                <select id="nature" name="nature" required>
+                    <option value="esports">Esports</option>
+                    <option value="sports">Sports</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                </select><br>
+
+                <button type="submit">Submit Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modify Event Modal -->
+    <div id="modifyEventModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModifyEventModal()">&times;</span>
+            <h2>Modify an Event</h2>
+            <form id="modifyEventForm">
+                <label for="modifyEventName">Event Name:</label>
+                <input type="text" id="modifyEventName" name="modifyEventName" required><br>
+
+                <label for="modifyEventDate">Event Date:</label>
+                <input type="date" id="modifyEventDate" name="modifyEventDate" required><br>
+
+                <label for="modifyEventDescription">Event Description:</label>
+                <textarea id="modifyEventDescription" name="modifyEventDescription" required></textarea><br>
+
+                <label for="modifyVenue">Venue:</label>
+                <input type="text" id="modifyVenue" name="modifyVenue" placeholder="e.g., Online, Stadium" required><br>
+
+                <label for="modifyNature">Nature:</label>
+                <select id="modifyNature" name="modifyNature" required>
+                    <option value="esports">Esports</option>
+                    <option value="sports">Sports</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                </select><br>
+
+                <button type="submit">Modify Event</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Open Add Event Modal
+        function openAddEventModal() {
+            document.getElementById('addEventModal').style.display = "block";
+        }
+
+        // Close Add Event Modal
+        function closeAddEventModal() {
+            document.getElementById('addEventModal').style.display = "none";
+        }
+
+        // Open Modify Event Modal
+        function openModifyEventModal() {
+            document.getElementById('modifyEventModal').style.display = "block";
+        }
+
+        // Close Modify Event Modal
+        function closeModifyEventModal() {
+            document.getElementById('modifyEventModal').style.display = "none";
+        }
+
+        // Close modal when clicking outside the modal content
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('addEventModal') || event.target == document.getElementById('modifyEventModal')) {
+                closeAddEventModal();
+                closeModifyEventModal();
+            }
+        }
+    </script>
+
+</body>
+</html>

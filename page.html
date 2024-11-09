@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges and Sponsors</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: blueviolet;
+            color: #333;
+        }
+
+        /* Centered container styling */
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+        }
+
+        /* Title styling */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        /* Button container styling */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        /* Button styling */
+        button {
+            padding: 15px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        /* Button colors and hover effects */
+        .challenges-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .challenges-button:hover {
+            background-color: #45a049;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .sponsors-button {
+            background-color: #008CBA;
+            color: white;
+        }
+        .sponsors-button:hover {
+            background-color: #007bb5;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Anchor tags with button styling */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Explore Challenges & Sponsors</h1>
+        <p>Select an option below to view the latest challenges or our valuable sponsors:</p>
+        
+        <div class="button-container">
+            <a href="challenges.html">
+                <button class="challenges-button">Challenges</button>
+            </a>
+            <a href="sponsors.html">
+                <button class="sponsors-button">Sponsors</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

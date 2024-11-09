@@ -13,6 +13,12 @@ body {
     align-items: center;
     min-height: 100vh;
     background: #081b29;
+    transition: opacity 0.5s ease; /* For smooth fade-out transition */
+}
+
+body.redirecting {
+    opacity: 0;
+    pointer-events: none; /* Prevent interaction while redirecting */
 }
 
 .wrapper {

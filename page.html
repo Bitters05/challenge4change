@@ -19,8 +19,7 @@
             justify-content: center;
             min-height: 100vh;
             font-family: Arial, sans-serif;
-            background: blueviolet;
-            color: #333;
+            background: #081b29;
         }
 
         /* Centered container styling */
@@ -29,9 +28,13 @@
             padding: 40px 20px;
             width: 90%;
             max-width: 500px;
-            background: white;
+            position: relative;
+            width: 750px;
+            height: 300px;
+            background: transparent;
+            border: 2px solid #0ef;
+            box-shadow: 0 0 25px #0ef;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
         }
 
@@ -43,7 +46,11 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #444;
+            color: #fff;;
+        }
+
+        p{
+            color: #ffffff;
         }
 
         /* Button container styling */
@@ -68,11 +75,11 @@
 
         /* Button colors and hover effects */
         .challenges-button {
-            background-color: #4CAF50;
+            background-color: #008CBA;
             color: white;
         }
         .challenges-button:hover {
-            background-color: #45a049;
+            background-color: #007bb5;
             transform: translateY(-4px);
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
         }
@@ -100,10 +107,10 @@
         <p>Select an option below to view the latest challenges or our valuable sponsors:</p>
         
         <div class="button-container">
-            <a href="challenges.html">
+            <a href="challenger.html">
                 <button class="challenges-button">Challenges</button>
             </a>
-            <a href="sponsors.html">
+            <a href="sponsor.html">
                 <button class="sponsors-button">Sponsors</button>
             </a>
         </div>

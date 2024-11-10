@@ -87,6 +87,6 @@ function initiateRedirect() {
 
     setTimeout(() => {
         // Redirect to the target page after the fade-out effect
-        window.location.href = "https://www.youtube.com/watch?v=BBJa32lCaaY";  // Change this to your target URL
+        window.location.href = "page.html";  // Change this to your target URL
     }, 500); // Delay the redirect to let the fade-out effect complete
 }

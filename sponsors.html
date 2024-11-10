@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #4921eb;
+            background: #081b29;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,20 +18,21 @@
         .container {
             text-align: center;
             padding: 20px;
-            background: white;
+            background: #081b29;
+            border: 2px solid #0ef;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 25px #0ef;
             width: 80%;
             max-width: 900px;
         }
 
         h1 {
-            color: #3e8e41;
+            color: #fff;
         }
 
         .appreciation-text {
             font-size: 1.2em;
-            color: #444;
+            color: #fff;
             margin-top: 20px;
             margin-bottom: 30px;
             font-style: italic;
@@ -39,32 +40,40 @@
 
         .button-container {
             display: flex;
-            justify-content: space-evenly;
+            gap: 20px;
             margin-top: 30px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         .event-button, .modify-button, .back-button {
-            padding: 12px 20px;
-            background-color: #3e8e41;
+            background-color: #008CBA;
             color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: background-color 0.3s ease;
         }
 
         .event-button:hover, .modify-button:hover, .back-button:hover {
-            background-color: #2c6b2f;
+            background-color: #007bb5;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
         }
 
         .back-button {
-            background-color: #f44336;
+            background-color: #0ef;
             margin-top: 20px;
         }
 
         .back-button:hover {
-            background-color: #d32f2f;
+            background-color: #0ef;
         }
 
         /* Modal styling */
@@ -82,7 +91,7 @@
         }
 
         .modal-content {
-            background-color: #f9f9f9;
+            background-color: #f0f0f0; /* Light grayish shade */
             margin: 5% auto;
             padding: 30px;
             border: 1px solid #888;
@@ -93,7 +102,7 @@
         }
 
         .modal h2 {
-            color: #3e8e41;
+            color: #008CBA; /* Blue color matching main page */
             font-size: 1.6em;
         }
 
@@ -133,7 +142,7 @@
 
         button[type="submit"] {
             padding: 12px 20px;
-            background-color: #3e8e41;
+            background-color: #008CBA; /* Blue color matching main page */
             color: white;
             border: none;
             border-radius: 30px;
@@ -142,22 +151,19 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #2c6b2f;
+            background-color: #007bb5;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Our Sponsors</h1>
-
         <div class="appreciation-text">
             We are deeply grateful to our sponsors for their generous support and dedication. Your partnership fuels our growth and success, and we are honored to have you by our side. Thank you for making a positive impact with us!
         </div>
 
         <!-- Button Container -->
         <div class="button-container">
-            <!-- Add Event and Modify Event Buttons -->
             <button class="event-button" onclick="openAddEventModal()">Add Event</button>
             <button class="modify-button" onclick="openModifyEventModal()">Modify Event</button>
         </div>
@@ -171,7 +177,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeAddEventModal()">&times;</span>
             <h2>Add a New Event</h2>
-            <form id="addEventForm">
+            <form id="addEventForm" onsubmit="submitEventForm(event)">
                 <label for="eventName">Event Name:</label>
                 <input type="text" id="eventName" name="eventName" required><br>
 
@@ -202,7 +208,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeModifyEventModal()">&times;</span>
             <h2>Modify an Event</h2>
-            <form id="modifyEventForm">
+            <form id="modifyEventForm" onsubmit="submitModifyEventForm(event)">
                 <label for="modifyEventName">Event Name:</label>
                 <input type="text" id="modifyEventName" name="modifyEventName" required><br>
 
@@ -229,34 +235,87 @@
     </div>
 
     <script>
-        // Open Add Event Modal
+        // Function to open Add Event Modal
         function openAddEventModal() {
-            document.getElementById('addEventModal').style.display = "block";
+            console.log('Opening Add Event Modal');
+            document.getElementById('addEventModal').style.display = 'block';
         }
 
-        // Close Add Event Modal
-        function closeAddEventModal() {
-            document.getElementById('addEventModal').style.display = "none";
-        }
-
-        // Open Modify Event Modal
+        // Function to open Modify Event Modal
         function openModifyEventModal() {
-            document.getElementById('modifyEventModal').style.display = "block";
+            console.log('Opening Modify Event Modal');
+            document.getElementById('modifyEventModal').style.display = 'block';
         }
 
-        // Close Modify Event Modal
+        // Function to close Add Event Modal
+        function closeAddEventModal() {
+            console.log('Closing Add Event Modal');
+            document.getElementById('addEventModal').style.display = 'none';
+        }
+
+        // Function to close Modify Event Modal
         function closeModifyEventModal() {
-            document.getElementById('modifyEventModal').style.display = "none";
+            console.log('Closing Modify Event Modal');
+            document.getElementById('modifyEventModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside the modal content
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('addEventModal') || event.target == document.getElementById('modifyEventModal')) {
+        // Function to handle Add Event Form Submission
+        function submitEventForm(event) {
+            event.preventDefault();
+            const formData = {
+                eventName: document.getElementById('eventName').value,
+                eventDate: document.getElementById('eventDate').value,
+                eventDescription: document.getElementById('eventDescription').value,
+                venue: document.getElementById('venue').value,
+                nature: document.getElementById('nature').value,
+            };
+
+            fetch('http://127.0.0.1:5000/add_event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Event added successfully!');
                 closeAddEventModal();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding event');
+            });
+        }
+
+        // Function to handle Modify Event Form Submission
+        function submitModifyEventForm(event) {
+            event.preventDefault();
+            const formData = {
+                eventName: document.getElementById('modifyEventName').value,
+                eventDate: document.getElementById('modifyEventDate').value,
+                eventDescription: document.getElementById('modifyEventDescription').value,
+                venue: document.getElementById('modifyVenue').value,
+                nature: document.getElementById('modifyNature').value,
+            };
+
+            fetch('http://127.0.0.1:5000/modify_event', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Event modified successfully!');
                 closeModifyEventModal();
-            }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error modifying event');
+            });
         }
     </script>
-
 </body>
 </html>
